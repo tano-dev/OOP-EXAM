@@ -57,7 +57,7 @@ public:
     ~a() {
         this->b1 = nullptr;
         for (auto i : this->b2) {
-            delete i; // Ensure 'b' destructor is called
+            delete (i); // Ensure 'b' destructor is called
         }
         this->b2.clear();
     }
@@ -119,7 +119,7 @@ public:
     //destructor
     ~b() {
         for (auto i : this->a1) {
-            delete i; // Ensure 'a' destructor is called
+            delete (i); // Ensure 'a' destructor is called
         }
         this->a1.clear();
     }
@@ -147,6 +147,7 @@ int main() {
     a1->display();
     b1->display();
     cout << "----------------------------------------" << endl;
+	a1->addB2(new b(5, 6));
     a1->showAll();
     b1->displayA();
     delete a1;
